@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bachat Bazaar - Product Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191b25",
+                        "secondary-fixed": "#ffe170",
+                        "inverse-on-surface": "#f0effe",
+                        "primary-fixed": "#dde1ff",
+                        "on-tertiary-fixed-variant": "#004d63",
+                        "on-primary-container": "#dfe3ff",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container": "#ededfb",
+                        "surface-variant": "#e1e1ef",
+                        "primary-container": "#0052ff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c5d9",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c400",
+                        "secondary-container": "#fdd400",
+                        "on-surface-variant": "#434656",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e303a",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#bce9ff",
+                        "surface-dim": "#d9d9e7",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f2ff",
+                        "tertiary-fixed-dim": "#6cd3fc",
+                        "outline": "#737688",
+                        "tertiary": "#00556d",
+                        "primary": "#003ec7",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-tint": "#004ced",
+                        "surface-container-high": "#e7e7f5",
+                        "on-tertiary-container": "#c2ebff",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-tertiary-fixed": "#001f2a",
+                        "on-secondary-container": "#6f5c00",
+                        "secondary": "#705d00",
+                        "surface": "#fbf8ff",
+                        "tertiary-container": "#006f8d",
+                        "on-primary-fixed": "#001452",
+                        "on-secondary-fixed": "#221b00",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-surface": "#191b25",
+                        "on-primary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "surface-container-highest": "#e1e1ef",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack_sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin_desktop": "64px",
+                        "grid_columns": "12",
+                        "stack_lg": "48px",
+                        "margin_mobile": "16px",
+                        "stack_md": "24px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        .ambient-shadow-lvl1 { box-shadow: 0 4px 12px -2px rgba(0, 82, 255, 0.06); }
+        .ambient-shadow-lvl2 { box-shadow: 0 8px 24px -4px rgba(0, 82, 255, 0.08); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md font-body-md pt-20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-blue-900/10">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-blue-600 dark:text-blue-500 font-h3 text-h3">Bachat Bazaar</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="#">Kitchen</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="#">Tech</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="#">Toys</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="#">Home</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="#">Beauty</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="text-blue-600 dark:text-blue-400 transition-all duration-200 ease-out hover:scale-105 active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-blue-600 dark:text-blue-400 transition-all duration-200 ease-out hover:scale-105 active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-margin_mobile md:px-margin_desktop pb-stack_lg">
+<!-- Breadcrumbs -->
+<div class="py-stack_md text-on-surface-variant font-label-sm text-label-sm flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Tech</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-background font-label-bold text-label-bold">Smart Home Hub V2</span>
+</div>
+<!-- Product Core Section (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-stack_lg">
+<!-- Image Gallery (Left, 7 cols) -->
+<div class="md:col-span-7 flex flex-col gap-base">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden ambient-shadow-lvl1 bg-surface-container relative">
+<img alt="Smart Home Hub" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="A sleek, modern smart home hub device resting on a clean, light-wood tabletop. The device is a minimalist white cylinder with subtle glowing blue LED accents indicating activity. The setting is a brightly lit, contemporary living space with soft, natural sunlight streaming in, highlighting the hyper-modern functional aesthetic. The atmosphere is tech-forward, organized, and inviting, perfectly aligning with a premium yet accessible product design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXBYGM_i-8uOblkJx5c0hVcC_RYfCHX2lWbFXQdijTEoaNkX-zwnh0r4f2-giJADi5uEgOfofW1rb8_VJ8LNSzCFghrhRm95JcAd5K2TuBk7gCxNQGAE8V_frt2iD1Ld2tQM17V5aRoRwdVjyQVRrYrzCw9lcZ41Zf5l5gMKaeRP9qgQ42SZyQLlyVrxj9L46lX_JhxmMVh1C4_92uXYyAsVB3tkK-YV_u7L37ct67LqyotLfKcX8YIgKSF7EzkCScgV2qi0tvCvI"/>
+<!-- The Dollar Deal Badge -->
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container font-label-bold text-label-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm">local_fire_department</span>
+                        Hot Deal
+                    </div>
+</div>
+<div class="grid grid-cols-4 gap-base">
+<div class="aspect-square rounded-lg overflow-hidden border-2 border-primary-container cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close up of the sleek white smart home hub device showing the top control panel. The surface is smooth and matte, with subtle touch-sensitive icons. Bright, natural lighting emphasizes the clean, minimalist design language. The hyper-modern functional style is prominent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK45zW7EEvAE9tMSA9gNTrhCiunZmUFgg3buq7KbECliUCl1IYxX87k5lFrdmcdw0paU5tEYI_oG_HR3sdkrYoz8cUrTgOcx4hor0MKw9mFb5t1uML4MMxionFYXZe58irMwTpRr6ykzdwX6oA2jeMIlJXqmw4M_vtEZyZqvXryX9UHMbUp6Mgq-vmkP-nh7T4aIqvPADMt8fhku8hwWluqlt0b__MZF7TpMTE5lAcwJ0vXoge5tDAMZs5nKltL8P2a-Hl-6ZKKCQ"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-surface-variant cursor-pointer transition-colors">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity" data-alt="Side profile view of the smart home hub next to a small green succulent plant on a light desk. The contrast between the organic plant and the geometric, minimalist tech device highlights the modern aesthetic. Soft, diffused lighting creates a calm, organized mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAgJwd1jcDo64Km1eBRKLrba8oC5gReNod3JAw1qaUrXFb9oxOGwwdsx8CuVqj0jWaJSNOjVF_PdMzBzYm8V9H7ySO6a-iclTpRLpJwlTgISOHPcoR4FPoelj3W8F-eQmIr-1UuK6NWNnWR9NkrXjS3hbbLlKo08SabzS1IwwJdpa1RX-M-QNhmtN9spmkCAfOiYs76dww6li-zKOeRWgayAM8e5AODaSw1yQ5EO1NI2I7Q9t3EXsi7iw5MMLci3J-yau9CL2AEZw"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-surface-variant cursor-pointer transition-colors">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity" data-alt="The smart home hub shown in a dimly lit room environment, emphasizing the subtle blue LED ring light glowing around its base. The lighting effect is smooth and futuristic, contrasting with the dark background. The scene conveys a sense of smart, responsive technology in a modern home." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9peQqgkAqKkbBvURZN6_oQwMh9NOT9CaBSd2lcUocvllkixeG9Xb7w_J52zf4FPS7_mIEzO4datkNAnsu1Mcqsj-Fh_2EXmionHjw7yKbkMkmU9wTN2vIstSaL1rOeMkJYx1Lv084ZTHJqNEM8sMtyawpoOuNNKDdbe0ZsyBPSniSfuHDvpVpZMW6D4gJ7QkCbi96kiHWorjfICgPOhOzUOI6CjKB90yDznJVYk_wNeVUNHhPJapWrDrUsF7up-cjJzmSxEMr7XU"/>
+</div>
+</div>
+</div>
+<!-- Product Info (Right, 5 cols) -->
+<div class="md:col-span-5 flex flex-col justify-start">
+<div class="flex gap-2 mb-3">
+<span class="bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm px-3 py-1 rounded-full">Tech</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon text-secondary-fixed-dim">star</span> 4.8
+                    </span>
+</div>
+<h1 class="font-h2 text-h2 text-on-background mb-2">Smart Home Hub V2</h1>
+<div class="flex items-baseline gap-3 mb-6">
+<span class="font-h1 text-h1 text-primary">Rs. 4,500</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant line-through">Rs. 6,000</span>
+<span class="bg-error-container text-on-error-container font-label-bold text-label-bold px-2 py-0.5 rounded ml-2">-25%</span>
+</div>
+<!-- Progressive Bundle Bar -->
+<div class="bg-surface-container-low rounded-lg p-4 mb-6 border border-surface-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-bold text-label-bold text-on-surface">Add Rs. 500 more for Free Shipping!</span>
+<span class="material-symbols-outlined text-primary text-sm">local_shipping</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[90%] rounded-full"></div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                    Control your entire home ecosystem with a single command. The new V2 features enhanced voice recognition, seamless integration with major smart devices, and a minimalist design that fits any room. Smart savings on smart tech.
+                </p>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mt-auto">
+<div class="flex items-center gap-4 mb-2">
+<span class="font-label-bold text-label-bold text-on-surface w-20">Quantity</span>
+<div class="flex items-center border border-outline-variant rounded-lg overflow-hidden bg-surface-container-lowest h-12">
+<button class="px-4 text-on-surface-variant hover:bg-surface-variant transition-colors h-full flex items-center justify-center">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<input class="w-12 text-center border-none focus:ring-0 font-label-bold text-label-bold bg-transparent h-full p-0" type="text" value="1"/>
+<button class="px-4 text-on-surface-variant hover:bg-surface-variant transition-colors h-full flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary rounded-full py-4 font-label-bold text-label-bold flex items-center justify-center gap-2 transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg">
+<span class="material-symbols-outlined">shopping_bag</span>
+                        Add to Cart
+                    </button>
+<button class="w-full bg-surface-bright text-primary border-2 border-primary-container rounded-full py-3.5 font-label-bold text-label-bold flex items-center justify-center gap-2 transition-all duration-200 ease-out hover:bg-primary-fixed hover:scale-[1.02]">
+<span class="material-symbols-outlined">chat</span>
+                        Order via WhatsApp
+                    </button>
+</div>
+</div>
+</div>
+<!-- Specifications & Reviews Tabs -->
+<div class="mb-stack_lg">
+<div class="flex gap-8 border-b border-surface-variant mb-6">
+<button class="font-h3 text-h3 text-primary border-b-4 border-primary pb-2 px-1">Details</button>
+<button class="font-h3 text-h3 text-on-surface-variant hover:text-on-surface pb-2 px-1 transition-colors">Reviews (128)</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low rounded-xl p-6 ambient-shadow-lvl1">
+<h4 class="font-label-bold text-label-bold text-on-surface mb-4">Product Specifications</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li class="flex justify-between border-b border-surface-variant pb-2"><span>Brand</span> <span class="text-on-surface font-medium">Bachat Tech</span></li>
+<li class="flex justify-between border-b border-surface-variant pb-2"><span>Connectivity</span> <span class="text-on-surface font-medium">WiFi, Bluetooth 5.0</span></li>
+<li class="flex justify-between border-b border-surface-variant pb-2"><span>Power</span> <span class="text-on-surface font-medium">USB-C</span></li>
+<li class="flex justify-between"><span>Warranty</span> <span class="text-on-surface font-medium">1 Year Local</span></li>
+</ul>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 ambient-shadow-lvl1">
+<h4 class="font-label-bold text-label-bold text-on-surface mb-4">Quick Delivery</h4>
+<div class="flex items-start gap-4 mb-4">
+<div class="bg-primary-fixed text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Standard Delivery</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">2-3 Business Days (Lahore)</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-primary-fixed text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">100% Genuine Product</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Bachat Bazaar Guarantee</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Related Products (Glassmorphism Cards) -->
+<div>
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-h2 text-h2 text-on-background">Related Deals</h2>
+<a class="font-label-bold text-label-bold text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-surface-bright rounded-xl overflow-hidden ambient-shadow-lvl1 hover:ambient-shadow-lvl2 transition-all duration-200 border border-surface-variant">
+<div class="aspect-square bg-surface-container relative overflow-hidden">
+<img alt="Smart Watch" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sleek modern smartwatch with a black digital face and a dark silicone strap, resting on a clean white surface. Bright, crisp lighting emphasizes the modern, tech-focused design. Hyper-modern functional aesthetic with a clean background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBOMfXbvqWNzV425jIlnDXilK3_aM_eSR4nYR4TTviW9sTnKs1CdpOmYIbcdurkvSsF24ut0cQLQ9prtJy9ZM13t42vF9TJq_zZ9vTIisK6Ydznb1hi4CkQMxeMzYR-Vl3oJyaaVd8n4Q0sHf7ECWEiSNxq3_aMA9lUjLoEGYGUzdZj_-YKRkZz-dG3sdPAoKkGxa74W7v9o8JOakaPKnvpwb5GUam6c2zgOBXl-fWWG5N3X5ETDq8t-v3YHi_hQmfdNCmYICB97Y"/>
+<div class="absolute top-2 right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">Rs. 2,100</div>
+</div>
+<div class="p-4">
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1 block">Tech</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-2 truncate">Active Smart Watch Gen3</h3>
+<button class="w-full bg-surface-variant text-on-surface hover:bg-primary-container hover:text-on-primary rounded-full py-2 font-label-bold text-label-bold transition-colors text-sm">View Deal</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-bright rounded-xl overflow-hidden ambient-shadow-lvl1 hover:ambient-shadow-lvl2 transition-all duration-200 border border-surface-variant">
+<div class="aspect-square bg-surface-container relative overflow-hidden">
+<img alt="Earbuds" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A pair of minimalist white wireless earbuds resting inside their open charging case on a pastel blue surface. The lighting is soft and even, highlighting the smooth plastic finish of the tech accessory. The overall vibe is clean, accessible, and highly modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNL5VEHXyrIoRqOWJPww9Gh1IrIQhI6BxC-tSRKCeQsRys-QbbgnV1psZ3N2amyg54mvZZrWAmf_FPxyKM2pfjSnhwYd1vPhqgHQSjHiqOzdw5s3oZvR_JGepVZC_bg9pIlE0j0nuugQUXMuaZWKRSnJx0jzvKN2qqkOigxF3pULB_Mu2aZ7qfsocbqHahj2hIJiR_abpMPo-nAuwWgEM9LYrmTFD7rh7Qia1K7PxXuxDNTQ8g5i0LOqD0WDcttyxhMekHLJtT6w8"/>
+<div class="absolute top-2 right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">Rs. 1,500</div>
+</div>
+<div class="p-4">
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1 block">Tech</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-2 truncate">Wireless Pods Pro</h3>
+<button class="w-full bg-surface-variant text-on-surface hover:bg-primary-container hover:text-on-primary rounded-full py-2 font-label-bold text-label-bold transition-colors text-sm">View Deal</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-bright rounded-xl overflow-hidden ambient-shadow-lvl1 hover:ambient-shadow-lvl2 transition-all duration-200 border border-surface-variant hidden md:block">
+<div class="aspect-square bg-surface-container relative overflow-hidden">
+<img alt="Headphones" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Premium over-ear headphones in a sleek matte black finish, placed on a light grey, slightly textured surface. Natural lighting casts soft shadows, giving the product a high-end yet approachable feel. The composition is simple and centers entirely on the modern tech item." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB29JG4uXCQ0kaODZ2GFmII_3MvH_HJdF9a3iFQ8RfolD0A1uiDqMtGwMYAEK2GqaH6pelamCUwn1lRaL-F5bKaBL1rzbpLHV4tqkZ0wBb3nvEZuW0jcNueaWee9PEQ-6ZtderPswH4pH9i1nUWUKsLJ-O9BvrkviNz0Ze6DHZ999nUQVKrJBn4CCKZafRnhQdWAy8GRD5h4oNbQru3SeztfRSacbkVz-x4TGsyxEewg4Kzvi2qg73P2brCa-9c8C1hAZJ8kw3NySw"/>
+<div class="absolute top-2 right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">Rs. 3,200</div>
+</div>
+<div class="p-4">
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1 block">Tech</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-2 truncate">Studio Over-Ear Audio</h3>
+<button class="w-full bg-surface-variant text-on-surface hover:bg-primary-container hover:text-on-primary rounded-full py-2 font-label-bold text-label-bold transition-colors text-sm">View Deal</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-bright rounded-xl overflow-hidden ambient-shadow-lvl1 hover:ambient-shadow-lvl2 transition-all duration-200 border border-surface-variant hidden md:block">
+<div class="aspect-square bg-surface-container relative overflow-hidden">
+<img alt="Power Bank" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A slim, silver power bank next to a coiled white charging cable on a stark white desk. The shot is top-down, emphasizing the clean geometry and utility of the devices. Bright, high-key lighting creates a sterile, highly modern, and functional environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA47HK6dEiUVXs5vTPz1r5hrLHxyFhl_gTAbDeRIEaxQxHd143HdqwLIMV3J8fNf3ph-4BOmAv1MgUdezC3_2yGcecss1uawutDfnQiHjwxa9uNkc9tV79QIqMmM4QlRkC9Rc5vdka1FpkhIoVv0XXU4HgtSCUMRaY8r4ANJiDPMv2vm3TOwfkxD9gkYbpfIwmWDz1936NUKUbqQtGM2ZfwIFOBml-LUuIRZnUSyRSAg-JGdvZYKMlVdGDcUVMpzipud2PCDSmjdJI"/>
+<div class="absolute top-2 right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full">Rs. 1,800</div>
+</div>
+<div class="p-4">
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1 block">Tech</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-2 truncate">10k mAh Power Core</h3>
+<button class="w-full bg-surface-variant text-on-surface hover:bg-primary-container hover:text-on-primary rounded-full py-2 font-label-bold text-label-bold transition-colors text-sm">View Deal</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 mt-stack_lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div>
+<div class="text-xl font-bold text-slate-900 dark:text-white mb-4">Bachat Bazaar</div>
+<p class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 mb-4">© 2024 Bachat Bazaar Pakistan. Smart Savings, Daily Discovery.</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">About Us</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Contact Support</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Shipping Info</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Store Locator</a>
+</div>
+</div>
+</footer>
+</body></html>

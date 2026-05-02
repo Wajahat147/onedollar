@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>One Dollar - Product Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/assets/js/app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191b25",
+                        "secondary-fixed": "#ffe170",
+                        "inverse-on-surface": "#f0effe",
+                        "primary-fixed": "#dde1ff",
+                        "on-tertiary-fixed-variant": "#004d63",
+                        "on-primary-container": "#dfe3ff",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container": "#ededfb",
+                        "surface-variant": "#e1e1ef",
+                        "primary-container": "#0052ff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c5d9",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c400",
+                        "secondary-container": "#fdd400",
+                        "on-surface-variant": "#434656",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e303a",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#bce9ff",
+                        "surface-dim": "#d9d9e7",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f2ff",
+                        "tertiary-fixed-dim": "#6cd3fc",
+                        "outline": "#737688",
+                        "tertiary": "#00556d",
+                        "primary": "#003ec7",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-tint": "#004ced",
+                        "surface-container-high": "#e7e7f5",
+                        "on-tertiary-container": "#c2ebff",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-tertiary-fixed": "#001f2a",
+                        "on-secondary-container": "#6f5c00",
+                        "secondary": "#705d00",
+                        "surface": "#fbf8ff",
+                        "tertiary-container": "#006f8d",
+                        "on-primary-fixed": "#001452",
+                        "on-secondary-fixed": "#221b00",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-surface": "#191b25",
+                        "on-primary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "surface-container-highest": "#e1e1ef",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack_sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin_desktop": "64px",
+                        "grid_columns": "12",
+                        "stack_lg": "48px",
+                        "margin_mobile": "16px",
+                        "stack_md": "24px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        .ambient-shadow-lvl1 { box-shadow: 0 4px 12px -2px rgba(0, 82, 255, 0.06); }
+        .ambient-shadow-lvl2 { box-shadow: 0 8px 24px -4px rgba(0, 82, 255, 0.08); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md font-body-md pt-20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-blue-900/10">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-blue-600 dark:text-blue-500 font-h3 text-h3">One Dollar</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="/">Home</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="/shop.html">Shop All</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="/shop.html?category=Kitchen">Kitchen</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="/shop.html?category=Home">Home Essentials</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-all duration-200 ease-out hover:scale-105" href="/shop.html?category=Toys">Toys</a>
+</div>
+<div class="flex gap-4 items-center">
+<a href="/checkout.html" class="text-blue-600 dark:text-blue-400 transition-all duration-200 ease-out hover:scale-105 active:scale-95 duration-100 relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</a>
+<div id="auth-nav">
+<a href="/auth.html" class="text-blue-600 dark:text-blue-400 transition-all duration-200 ease-out hover:scale-105 active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-margin_mobile md:px-margin_desktop pb-stack_lg">
+<div id="product-content">
+<!-- Product dynamic content -->
+<div class="py-20 text-center text-slate-400">Loading product details...</div>
+</div>
+
+<script>
+const productId = new URLSearchParams(window.location.search).get('id');
+
+async function loadProduct() {
+    if (!productId) { location.href = '/shop.html'; return; }
+    try {
+        const product = await App.request(`/products/${productId}`);
+        console.log('--- PRODUCT LOADED ---', product);
+        document.title = `${product.name} - One Dollar`;
+        
+        const main = document.getElementById('product-content');
+        main.innerHTML = `
+            <div class="py-stack_md text-on-surface-variant font-label-sm text-label-sm flex items-center gap-2">
+                <a class="hover:text-primary transition-colors" href="/">Home</a>
+                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                <a class="hover:text-primary transition-colors" href="/shop.html?category=${product.category}">${product.category}</a>
+                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                <span class="text-on-background font-label-bold text-label-bold">${product.name}</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-stack_lg">
+                <div class="md:col-span-7">
+                    <div class="w-full aspect-[4/3] rounded-xl overflow-hidden ambient-shadow-lvl1 bg-surface-container img-zoom-container">
+                        <img src="${product.images[0]}" class="w-full h-full object-cover img-zoom hover:scale-110 transition-transform duration-1000">
+                    </div>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <div class="flex gap-2 mb-3">
+                        <span class="bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm px-3 py-1 rounded-full">${product.category}</span>
+                    </div>
+                    <h1 class="font-h2 text-h2 text-on-background mb-2">${product.name}</h1>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="font-h1 text-h1 text-primary">Rs. ${product.price}</span>
+                        <span class="text-green-600 font-bold">${product.stock > 0 ? 'In Stock' : 'Out of Stock'}</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8">${product.description}</p>
+                    <div class="flex flex-col gap-4 mt-auto">
+                         <div class="flex items-center gap-4 mb-2">
+                            <span class="font-label-bold text-label-bold text-on-surface w-20">Quantity</span>
+                            <div class="flex items-center border border-outline-variant rounded-lg overflow-hidden bg-surface-container-lowest h-12">
+                                <button onclick="changeQty(-1)" class="px-4 hover:bg-surface-variant h-full transition-colors">-</button>
+                                <input id="prod-qty" class="w-12 text-center border-none font-bold bg-transparent" type="text" value="1" readonly/>
+                                <button onclick="changeQty(1)" class="px-4 hover:bg-surface-variant h-full transition-colors">+</button>
+                            </div>
+                        </div>
+                        <button onclick='handleAddToCart(${JSON.stringify(product)})' class="w-full bg-slate-900 text-white rounded-xl py-4 font-bold hover:bg-blue-600 transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        // Removed AOS re-init to ensure instant visibility
+    } catch (err) { console.error(err); }
+}
+
+function changeQty(delta) {
+    const el = document.getElementById('prod-qty');
+    let val = parseInt(el.value) + delta;
+    if (val < 1) val = 1;
+    el.value = val;
+}
+
+function handleAddToCart(product) {
+    const qty = parseInt(document.getElementById('prod-qty').value);
+    App.addToCart(product, qty);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadProduct();
+});
+</script>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 mt-stack_lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div>
+<div class="text-xl font-bold text-slate-900 dark:text-white mb-4">One Dollar</div>
+<p class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 mb-4">© 2024 One Dollar Pakistan. Smart Savings, Daily Discovery.</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">About Us</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="javascript:alert('Demo Details:\n\nAdmin Email: admin@bachatbazaar.pk\nAdmin Pass: admin123\n\nSeller Notifications: sahabbutt921@gmail.com')">Contact Support</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Shipping Info</a>
+<a class="font-plus-jakarta-sans text-xs uppercase tracking-widest text-slate-500 text-slate-500 hover:text-blue-500 hover:underline transition-all ease-in-out duration-200" href="#">Store Locator</a>
+</div>
+</div>
+</footer>
+</body></html>

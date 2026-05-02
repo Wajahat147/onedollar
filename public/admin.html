@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Dashboard - One Dollar</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="/assets/js/app.js"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white flex flex-col">
+        <div class="p-6 text-2xl font-black text-blue-400">Admin Panel</div>
+        <nav class="flex-grow p-4 space-y-2">
+            <button onclick="showSection('stats')" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined">dashboard</span> Dashboard
+            </button>
+            <button onclick="showSection('products')" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined">inventory_2</span> Products
+            </button>
+            <button onclick="showSection('orders')" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined">shopping_cart</span> Orders
+            </button>
+            <a href="/" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors mt-auto">
+                <span class="material-symbols-outlined">home</span> View Store
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-8 overflow-y-auto">
+        <!-- Stats Section -->
+        <section id="section-stats" class="space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800">Dashboard Overview</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Total Revenue</p>
+                    <h2 class="text-3xl font-black text-primary mt-1" id="stat-revenue">Rs. 0</h2>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Total Orders</p>
+                    <h2 class="text-3xl font-black text-primary mt-1" id="stat-orders">0</h2>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Total Users</p>
+                    <h2 class="text-3xl font-black text-primary mt-1" id="stat-users">0</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="section-products" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-slate-800">Manage Products</h1>
+                <button onclick="openProductModal()" class="bg-primary text-white px-6 py-2 rounded-lg font-bold">Add Product</button>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Product</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Category</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Price</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Stock</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="section-orders" class="hidden space-y-6">
+            <h1 class="text-3xl font-bold text-slate-800">Manage Orders</h1>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 border-b border-slate-100">
+                        <tr>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Order ID</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Customer</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Total</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Status</th>
+                            <th class="px-6 py-4 text-slate-500 font-bold uppercase text-xs">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Modal (Hidden) -->
+    <div id="product-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center p-6 z-[100]">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-8 space-y-4">
+            <h2 class="text-2xl font-bold" id="modal-title">Add Product</h2>
+            <form id="product-form" class="space-y-3">
+                <input type="hidden" id="p-id">
+                <input type="text" id="p-name" placeholder="Product Name" required class="w-full border p-3 rounded-xl">
+                <textarea id="p-desc" placeholder="Description" required class="w-full border p-3 rounded-xl"></textarea>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" id="p-price" placeholder="Price (PKR)" required class="w-full border p-3 rounded-xl">
+                    <input type="number" id="p-stock" placeholder="Stock" required class="w-full border p-3 rounded-xl">
+                </div>
+                <select id="p-category" required class="w-full border p-3 rounded-xl">
+                    <option value="Gifts">Gifts</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Makeup">Makeup</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Home">Home</option>
+                    <option value="Art">Art</option>
+                </select>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-slate-500 uppercase px-1">Product Image</label>
+                    <input type="file" id="p-image-file" accept="image/*" class="w-full border p-3 rounded-xl bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-blue-700">
+                </div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="closeProductModal()" class="flex-grow border p-3 rounded-xl">Cancel</button>
+                    <button type="submit" class="flex-grow bg-primary text-white p-3 rounded-xl font-bold">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#003ec7' } } } };
+
+        async function loadStats() {
+            try {
+                const stats = await App.request('/orders/admin/stats');
+                document.getElementById('stat-revenue').innerText = `Rs. ${stats.revenue.toLocaleString()}`;
+                document.getElementById('stat-orders').innerText = stats.totalOrders;
+                document.getElementById('stat-users').innerText = stats.totalUsers;
+            } catch (err) { console.error(err); }
+        }
+
+        async function loadProducts() {
+            try {
+                const products = await App.request('/products');
+                const tbody = document.getElementById('products-table');
+                tbody.innerHTML = products.map(p => `
+                    <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-800">${p.name}</td>
+                        <td class="px-6 py-4 text-slate-500">${p.category}</td>
+                        <td class="px-6 py-4 text-primary font-bold">Rs. ${p.price}</td>
+                        <td class="px-6 py-4 text-slate-500">${p.stock}</td>
+                        <td class="px-6 py-4 space-x-2">
+                            <button onclick="editProduct('${p._id}')" class="text-blue-600 hover:underline">Edit</button>
+                            <button onclick="deleteProduct('${p._id}')" class="text-red-600 hover:underline">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) { console.error(err); }
+        }
+
+        async function loadOrders() {
+            try {
+                const orders = await App.request('/orders/admin/all');
+                const tbody = document.getElementById('orders-table');
+                tbody.innerHTML = orders.map(o => `
+                    <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-mono text-xs text-slate-400">#${o._id.slice(-6).toUpperCase()}</td>
+                        <td class="px-6 py-4">
+                            <div class="font-medium text-slate-800">${o.shippingAddress.firstName} ${o.shippingAddress.lastName}</div>
+                            <div class="text-xs text-slate-500">${o.shippingAddress.phone}</div>
+                        </td>
+                        <td class="px-6 py-4 text-primary font-bold">Rs. ${o.totalAmount}</td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 rounded-full text-xs font-bold ${getStatusClass(o.status)}">${o.status}</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <select onchange="updateOrderStatus('${o._id}', this.value)" class="text-sm border rounded p-1">
+                                <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Confirmed" ${o.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                                <option value="Shipped" ${o.status === 'Shipped' ? 'selected' : ''}>Shipped</option>
+                                <option value="Delivered" ${o.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
+                            </select>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) { console.error(err); }
+        }
+
+        function getStatusClass(status) {
+            switch(status) {
+                case 'Pending': return 'bg-yellow-100 text-yellow-700';
+                case 'Confirmed': return 'bg-blue-100 text-blue-700';
+                case 'Shipped': return 'bg-purple-100 text-purple-700';
+                case 'Delivered': return 'bg-green-100 text-green-700';
+                default: return 'bg-slate-100 text-slate-700';
+            }
+        }
+
+        async function updateOrderStatus(id, status) {
+            try {
+                await App.request(`/orders/${id}/status`, 'PUT', { status });
+                App.showToast('Order status updated');
+                loadOrders();
+            } catch (err) { alert(err.message); }
+        }
+
+        function showSection(name) {
+            ['stats', 'products', 'orders'].forEach(s => {
+                document.getElementById(`section-${s}`).classList.add('hidden');
+            });
+            document.getElementById(`section-${name}`).classList.remove('hidden');
+            if (name === 'stats') loadStats();
+            if (name === 'products') loadProducts();
+            if (name === 'orders') loadOrders();
+        }
+
+        function openProductModal() {
+            document.getElementById('product-form').reset();
+            document.getElementById('p-id').value = '';
+            document.getElementById('modal-title').innerText = 'Add Product';
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        async function editProduct(id) {
+            const product = await App.request(`/products/${id}`);
+            document.getElementById('p-id').value = product._id;
+            document.getElementById('p-name').value = product.name;
+            document.getElementById('p-desc').value = product.description;
+            document.getElementById('p-price').value = product.price;
+            document.getElementById('p-stock').value = product.stock;
+            document.getElementById('p-category').value = product.category;
+            document.getElementById('modal-title').innerText = 'Edit Product';
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        document.getElementById('product-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('p-id').value;
+            
+            // Use FormData for file upload
+            const formData = new FormData();
+            formData.append('name', document.getElementById('p-name').value);
+            formData.append('description', document.getElementById('p-desc').value);
+            formData.append('price', Number(document.getElementById('p-price').value));
+            formData.append('stock', Number(document.getElementById('p-stock').value));
+            formData.append('category', document.getElementById('p-category').value);
+            
+            const imageFile = document.getElementById('p-image-file').files[0];
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+            try {
+                const method = id ? 'PUT' : 'POST';
+                const url = id ? `/products/${id}` : '/products';
+                
+                // Note: fetch will automatically set the correct Content-Type for FormData
+                const response = await fetch(`${App.apiBase}${url}`, {
+                    method: method,
+                    headers: { 'Authorization': `Bearer ${App.token}` },
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+                
+                closeProductModal();
+                loadProducts();
+                App.showToast('Product saved successfully');
+            } catch (err) { alert(err.message); }
+        };
+
+        async function deleteProduct(id) {
+            if (!confirm('Are you sure?')) return;
+            try {
+                await App.request(`/products/${id}`, 'DELETE');
+                loadProducts();
+                App.showToast('Product deleted');
+            } catch (err) { alert(err.message); }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!App.user || App.user.role !== 'admin') {
+                alert('Admin access required');
+                location.href = '/auth.html';
+            }
+            loadStats();
+        });
+    </script>
+</body>
+</html>

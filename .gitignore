@@ -1,0 +1,8 @@
+node_modules/
+.env
+public/uploads/
+*.log
+test_order.json
+test-db.js
+seed.js
+.DS_Store
