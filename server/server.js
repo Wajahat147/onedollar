@@ -19,9 +19,27 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // DB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bachat-bazaar';
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log('MongoDB Connection Error:', err));
+
+let cachedDb = null;
+async function connectToDatabase() {
+  if (cachedDb) return cachedDb;
+  const db = await mongoose.connect(MONGODB_URI);
+  cachedDb = db;
+  return db;
+}
+
+// Middleware to ensure DB is connected
+app.use(async (req, res, next) => {
+  try {
+    await connectToDatabase();
+    next();
+  } catch (err) {
+    res.status(500).json({ error: 'Database connection failed' });
+  }
+});
+
+// Health Check
+app.get('/api/health', (req, res) => res.json({ status: 'ok', db: mongoose.connection.readyState }));
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
