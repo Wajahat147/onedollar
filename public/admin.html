@@ -118,8 +118,15 @@
                     <option value="Art">Art</option>
                 </select>
                 <div class="space-y-1">
-                    <label class="text-xs font-bold text-slate-500 uppercase px-1">Product Image</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase px-1">Option 1: Upload Image (Local Only)</label>
                     <input type="file" id="p-image-file" accept="image/*" class="w-full border p-3 rounded-xl bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-blue-700">
+                </div>
+                <div class="space-y-1 text-center py-1">
+                    <span class="text-[10px] text-slate-400 font-bold">- OR -</span>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-bold text-slate-500 uppercase px-1">Option 2: Image URL (Best for Vercel)</label>
+                    <input type="text" id="p-image-url" placeholder="https://example.com/image.jpg" class="w-full border p-3 rounded-xl">
                 </div>
                 <div class="flex gap-4 pt-4">
                     <button type="button" onclick="closeProductModal()" class="flex-grow border p-3 rounded-xl">Cancel</button>
@@ -242,8 +249,10 @@
         document.getElementById('product-form').onsubmit = async (e) => {
             e.preventDefault();
             const id = document.getElementById('p-id').value;
+            const fileInput = document.getElementById('p-image-file');
+            const imageUrl = document.getElementById('p-image-url').value;
             
-            // Use FormData for file upload
+            // Use FormData for file upload or URL
             const formData = new FormData();
             formData.append('name', document.getElementById('p-name').value);
             formData.append('description', document.getElementById('p-desc').value);
@@ -251,9 +260,11 @@
             formData.append('stock', Number(document.getElementById('p-stock').value));
             formData.append('category', document.getElementById('p-category').value);
             
-            const imageFile = document.getElementById('p-image-file').files[0];
+            const imageFile = fileInput.files[0];
             if (imageFile) {
                 formData.append('image', imageFile);
+            } else if (imageUrl) {
+                formData.append('imageUrl', imageUrl);
             }
 
             try {
@@ -261,13 +272,16 @@
                 const url = id ? `/products/${id}` : '/products';
                 
                 // Note: fetch will automatically set the correct Content-Type for FormData
-                const response = await fetch(`${App.apiBase}${url}`, {
+                const response = await fetch(`${API_URL}${url}`, {
                     method: method,
                     headers: { 'Authorization': `Bearer ${App.token}` },
                     body: formData
                 });
 
-                if (!response.ok) throw new Error(await response.text());
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error saving product');
+                }
                 
                 closeProductModal();
                 loadProducts();

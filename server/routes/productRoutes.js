@@ -48,6 +48,8 @@ router.post('/', auth, admin, upload.single('image'), async (req, res) => {
     const productData = req.body;
     if (req.file) {
       productData.images = [`/uploads/${req.file.filename}`];
+    } else if (req.body.imageUrl) {
+      productData.images = [req.body.imageUrl];
     }
     const product = new Product(productData);
     await product.save();
@@ -63,6 +65,8 @@ router.put('/:id', auth, admin, upload.single('image'), async (req, res) => {
     const productData = req.body;
     if (req.file) {
       productData.images = [`/uploads/${req.file.filename}`];
+    } else if (req.body.imageUrl) {
+      productData.images = [req.body.imageUrl];
     }
     const product = await Product.findByIdAndUpdate(req.params.id, productData, { new: true });
     res.json(product);
